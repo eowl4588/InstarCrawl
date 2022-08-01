@@ -30,38 +30,40 @@ time.sleep(1)
 # 댓글 플러스 버튼 누르기
 while True:
     try:
-        button = driver.find_element_by_class_name('_abl-')
+        button = driver.find_element_by_css_selector('div._aa-9 > ul > li > div > button')
     except:
         pass
 
     if button is not None:
         try:
-            driver.find_element_by_class_name('_abl-').click()
+            driver.find_element_by_css_selector('div._aa-9 > ul > li > div > button').click()
         except:
             break
 
 # 대댓글 버튼 누르기
-buttons = driver.find_elements_by_css_selector('li > ul > li > div > button')
+buttons = driver.find_elements_by_css_selector('ul._a9ym > li > ul > li > div > button')
 
 for button in buttons:
     button.send_keys(Keys.ENTER)
 
+time.sleep(1)
+
 # 댓글 내용 추출
 id_f = []
 rp_f = []
+ids = driver.find_elements_by_css_selector('div._a9zr > h2 > div > span > a')
+ids = ids + driver.find_elements_by_css_selector('div._a9zr > h3 > div > span > a')
+replies = driver.find_elements_by_css_selector('div._a9zs > span')
 
-ids  = driver.find_elements_by_css_selector('div.C4VMK > h3 > div > span > a')
-replies = driver.find_elements_by_css_selector('div.C7I1f > div.C4VMK > span')
 
-for id, reply in zip(ids, replies):
-    id_a = id.text.strip()
+for zips in zip(ids, replies):
+    id_a = zips[0].text.strip()
     id_f.append(id_a)
 
-    rp_a = reply.text.strip()
+    rp_a = zips[1].text.strip()
     rp_f.append(rp_a)
 
-
-    data = {"아이디": id_f, "코멘트": rp_f}
+data = {"아이디": id_f, "코멘트": rp_f}
 
 df = pd.DataFrame(data)
 df.to_excel('result.xlsx')
