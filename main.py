@@ -10,7 +10,9 @@ from selenium.webdriver.common.keys import Keys
 wb = Workbook(write_only=True)
 ws = wb.create_sheet()
 
-driver = webdriver.Chrome()
+win_path = './chromeDriver/103_win/chromedriver.exe'
+mac_path = './chromeDriver/104_mac_m1/chromedriver'
+driver = webdriver.Chrome(mac_path)
 driver.get("https://www.instagram.com/accounts/login/?next=%2Fp%2FCfk_BBKPk1k%2F&source=desktop_nav")
 driver.implicitly_wait(3)
 
