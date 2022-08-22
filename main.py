@@ -13,7 +13,7 @@ ws = wb.create_sheet()
 win_path = './chromeDriver/103_win/chromedriver.exe'
 mac_path = './chromeDriver/104_mac_m1/chromedriver'
 driver = webdriver.Chrome(mac_path)
-driver.get("https://www.instagram.com/accounts/login/?next=%2Fp%2FCfk_BBKPk1k%2F&source=desktop_nav")
+driver.get("https://www.instagram.com/accounts/login/?next=%2Fp%2FCg0hhGPvWDB%2F&source=desktop_nav&hl=ko")
 driver.implicitly_wait(3)
 
 
@@ -32,13 +32,13 @@ time.sleep(1)
 # 댓글 플러스 버튼 누르기
 while True:
     try:
-        button = driver.find_element_by_css_selector('div._aa-9 > ul > li > div > button')
+        button = driver.find_element_by_css_selector('div._ae5q > ul > li > div > button')
     except:
         pass
 
     if button is not None:
         try:
-            driver.find_element_by_css_selector('div._aa-9 > ul > li > div > button').click()
+            driver.find_element_by_css_selector('div._ae5q > ul > li > div > button').click()
         except:
             break
 
